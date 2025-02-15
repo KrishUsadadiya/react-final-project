@@ -71,7 +71,7 @@ const Home = () => {
               ))}
             </select>
           </div>
-          <h2 className="text-black my-4">student List</h2>
+          <h2 className="text-black my-4">All Student List</h2>
 
           {filteredData.length === 0 ? (
             <h4 className="text-center mt-3">Data Not Found</h4>

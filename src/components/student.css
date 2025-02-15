@@ -1,71 +1,4 @@
 
-.student-header {
-    background-color: #2e3031; 
-    padding: 10px 0;
- }
- 
- .student-header .logo {
-    font-size: 22px;
-    font-weight: bold;
-    color: white;
- }
- 
-
- .navbar-brand:hover{
-    color: white !important;
- }
- 
- .form-control:focus, .form-select:focus {
-    box-shadow: none !important;
- }
- .form-select:focus, textarea {
-    border: 1px solid #dee2e6 !important; 
- }
- .form-control , .form-select {
-    background-color: rgba(255, 255, 255, 0.74) !important;
-    color: black !important;
-    border: 1px solid black !important;
- }
- .form-select {
-    background-color: #fff;
- }
-
- 
- .student-form * {
-    position: relative;
-    z-index: 2;
- }
- 
- button, .prbtn {
-    border: none;
-    border-radius: 5px;
-    color: white !important;
-    transition: all 0.3s linear;
- }
- 
- .prbtn {
-    background-color: #0056b3;
-    margin: 0 auto;
-    padding: 10px 15px;
-    text-align: center;
- }
- .prbtn:hover {
-    background-color: #193864;
- }
- .card-img-top {
-    width: 100%;
-    height: 250px;
- }
- 
- .card-text {
-    font-size: 18px;
- }
- 
- .card-price {
-    color: black;
-    font-weight: 600;
- }
- 
  .center-container {
     display: flex;
     justify-content: center;
@@ -77,33 +10,7 @@
     max-width: 1200px; 
     margin: auto;
   }
-  
-  table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
-  }
-  
-  th, td {
-    border: 1px solid #ddd;
-    padding: 10px;
-    text-align: center !important;
-  }
-  tr{
-   border-bottom: 1px solid #bab3b3 !important;
-  }
-  th {
-    margin-bottom: 15px !important;
-    border-bottom: 1px solid black !important;
-    background-color: #105886c9;
-    color: white;
-  }
-  
-  td {
 
-    text-align: center;
-  }
-  
   button {
     padding: 5px 10px;
     border: none;

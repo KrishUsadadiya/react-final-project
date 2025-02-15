@@ -12,21 +12,17 @@ const Header = () => {
     }
 
     return (
-        <Navbar expand="lg" className="student-header ">
+        <Navbar expand="lg" className="bg-secondary">
             <Container>
-                <Navbar.Brand href="/" className="logo">
-                <img src="/public/logo.png" width={30} height={30} className='me-2' alt="logo" />
-                    student Manager
+                <Navbar.Brand href="/" className="">
+                    <img src="/public/logo.png" width={30} height={30} className='me-2' alt="logo" />
+                    <span className='text-white fw-bold'>student Management</span>
                 </Navbar.Brand>
-
-               
-                    <Nav className="d-flex justify-content-start">
-                        <Nav.Link href="/" className="text-white fw-bold">Home</Nav.Link>
-                        {user ? <Nav.Link href="/addstudent" className="text-white fw-bold me-2">Add student</Nav.Link> : ""}
-                        {!user ? <Nav.Link href="/login" className='logout-btn'>Login</Nav.Link> : <Button onClick={handleLogOut} className='button-50'>LogOut</Button>}
-                    </Nav>
-
-               
+                <Nav className="d-flex justify-content-start">
+                    <Nav.Link href="/" className="text-white fw-bold">Home</Nav.Link>
+                    {user ? <Nav.Link href="/addstudent" className="text-white fw-bold me-2">Add student</Nav.Link> : ""}
+                    {!user ? <Nav.Link href="/login" className='logout-btn'>Login</Nav.Link> : <Button onClick={handleLogOut} className='button-50'>LogOut</Button>}
+                </Nav>
             </Container>
         </Navbar>
     );
