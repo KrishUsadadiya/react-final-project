@@ -12,7 +12,7 @@ const Home = () => {
 
   const [sortOrder, setSortOrder] = useState("asc");
   const [filteredData, setFilteredData] = useState([]);
-  const [selectedCategory, setSelectedCategory] = useState("");
+  const [searchQuery, setSearchQuery] = useState("");
 
   useEffect(() => {
     dispatch(getAllstudentAsync());
@@ -24,25 +24,21 @@ const Home = () => {
     }
   }, [user, navigate]);
 
+  useEffect(() => {
+    let filtered = students.filter(student => 
+      student.name.toLowerCase().includes(searchQuery.toLowerCase()) || 
+      student.classno.toLowerCase().includes(searchQuery.toLowerCase())
+    );
+    setFilteredData(filtered);
+  }, [students, searchQuery]);
+
   const handleSort = () => {
     const sortedData = [...filteredData].sort((a, b) => {
-      return sortOrder === "asc"
-        ? a.name.localeCompare(b.name)
-        : b.name.localeCompare(a.name);
+      return sortOrder === "asc" ? a.name.localeCompare(b.name) : b.name.localeCompare(a.name);
     });
-
     setFilteredData(sortedData);
     setSortOrder(sortOrder === "asc" ? "desc" : "asc");
   };
-
-  useEffect(() => {
-    if (selectedCategory === "") {
-      setFilteredData(students);
-    } else {
-      const filtered = students.filter((student) => student.studentType === selectedCategory);
-      setFilteredData(filtered);
-    }
-  }, [selectedCategory, students]);
 
   const handleDelete = (id) => {
     dispatch(deletestudentAsync(id));
@@ -56,20 +52,17 @@ const Home = () => {
         <h2 className="text-black text-center mt-3">Loading....</h2>
       ) : (
         <>
-          <div className="search-filter my-4 d-flex justify-content-end">
-
+          <div className="search-filter my-4 d-flex justify-content-between">
+            <input
+              type="text"
+              placeholder="Search by Name or Class"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              className="form-control w-50"
+            />
             <button onClick={handleSort} className="sort-btn">
-              Sort by Title {sortOrder === "asc" ? <FaArrowUp /> : <FaArrowDown />}
+              Sort by Name {sortOrder === "asc" ? <FaArrowUp /> : <FaArrowDown />}
             </button>
-
-            <select onChange={(e) => setSelectedCategory(e.target.value)}>
-              <option value="">All Categories</option>
-              {[...new Set(students.map((lib) => lib.studentType))].map((category) => (
-                <option key={category} value={category}>
-                  {category}
-                </option>
-              ))}
-            </select>
           </div>
           <h2 className="text-black my-4">All Student List</h2>
 
@@ -81,11 +74,11 @@ const Home = () => {
                 <div key={student.id} className="card p-3 shadow">
                   <h3>{student.title}</h3>
                   <p><strong>Name:</strong> {student.name}</p>
-                  <p><strong>rollno:</strong> {student.rollno}</p>
-                  <p><strong>classno:</strong> {student.classno}</p>
-                  <p><strong>div:</strong> {student.div}</p>
-                  <p><strong>dob:</strong> {student.dob}</p>
-                  <p><strong>gender:</strong> {student.gender}</p>
+                  <p><strong>Roll No:</strong> {student.rollno}</p>
+                  <p><strong>Class No:</strong> {student.classno}</p>
+                  <p><strong>Div:</strong> {student.div}</p>
+                  <p><strong>DOB:</strong> {student.dob}</p>
+                  <p><strong>Gender:</strong> {student.gender}</p>
                   <div className="d-flex gap-2">
                     <button className="editbtn" onClick={() => navigate(`/edit/${student.id}`)}>Edit</button>
                     <button className="delbtn" onClick={() => handleDelete(student.id)}>Delete</button>
